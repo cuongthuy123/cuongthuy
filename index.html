@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HGCP Dashboard</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+background:#050505;
+}
+
+/* Nền động */
+body::before{
+content:"";
+position:fixed;
+inset:-50%;
+background:
+radial-gradient(circle,#ff000040 0%,transparent 25%),
+radial-gradient(circle,#0080ff30 0%,transparent 25%);
+background-size:500px 500px;
+animation:bgMove 15s linear infinite;
+pointer-events:none;
+}
+
+@keyframes bgMove{
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+}
+
+.container{
+position:relative;
+z-index:2;
+width:95%;
+max-width:500px;
+}
+
+.logo{
+text-align:center;
+margin-bottom:25px;
+}
+
+.logo h1{
+font-size:50px;
+color:#fff;
+text-shadow:
+0 0 10px #ff0000,
+0 0 25px #ff0000,
+0 0 50px #ff0000;
+animation:pulse 2s infinite alternate;
+}
+
+.logo p{
+margin-top:10px;
+color:#bbb;
+letter-spacing:2px;
+}
+
+@keyframes pulse{
+from{
+text-shadow:
+0 0 10px #ff0000,
+0 0 25px #ff0000;
+}
+to{
+text-shadow:
+0 0 20px #ff0000,
+0 0 40px #ff0000,
+0 0 80px #ff0000;
+}
+}
+
+.panel{
+background:rgba(20,20,20,.7);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,.08);
+border-radius:25px;
+padding:20px;
+box-shadow:0 0 20px rgba(255,0,0,.15);
+}
+
+/* MENU */
+.btn{
+display:flex;
+align-items:center;
+justify-content:center;
+height:72px;
+margin:15px 0;
+border-radius:18px;
+text-decoration:none;
+color:#fff;
+font-size:20px;
+font-weight:700;
+background:linear-gradient(135deg,#1a1a1a,#2b2b2b);
+border:1px solid #444;
+position:relative;
+overflow:hidden;
+transition:.25s;
+animation:breathe 3s infinite;
+}
+
+/* Quét trắng nhẹ liên tục */
+.btn::after{
+content:"";
+position:absolute;
+top:0;
+left:-150%;
+width:60%;
+height:100%;
+transform:skewX(-25deg);
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.08),
+rgba(255,255,255,.30),
+rgba(255,255,255,.08),
+transparent
+);
+animation:shine 4s infinite;
+pointer-events:none;
+}
+
+/* Quét đỏ khi hover */
+.btn::before{
+content:"";
+position:absolute;
+top:0;
+left:-180%;
+width:90px;
+height:100%;
+transform:skewX(-25deg);
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,0,0,.8),
+rgba(255,120,120,1),
+rgba(255,0,0,.8),
+transparent
+);
+opacity:0;
+pointer-events:none;
+}
+
+.btn:hover::before{
+opacity:1;
+animation:hoverShine .6s ease-out;
+}
+
+@keyframes hoverShine{
+0%{
+left:-180%;
+}
+100%{
+left:180%;
+}
+}
+
+@keyframes shine{
+0%{
+left:-150%;
+}
+35%{
+left:150%;
+}
+100%{
+left:150%;
+}
+}
+
+@keyframes breathe{
+0%{
+box-shadow:0 0 5px rgba(255,0,0,.15);
+}
+50%{
+box-shadow:0 0 18px rgba(255,0,0,.30);
+}
+100%{
+box-shadow:0 0 5px rgba(255,0,0,.15);
+}
+}
+
+.btn:hover{
+transform:translateY(-3px) scale(1.02);
+box-shadow:
+0 0 20px #ff0000,
+0 0 40px #ff0000,
+0 0 70px #ff0000;
+border-color:#ff4444;
+}
+
+.footer{
+margin-top:20px;
+text-align:center;
+font-size:13px;
+color:#777;
+letter-spacing:1px;
+}
+
+@media(max-width:600px){
+
+.logo h1{
+font-size:42px;
+}
+
+.btn{
+height:68px;
+font-size:18px;
+}
+
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="logo">
+<h1>HGCP</h1>
+<p>HỆ THỐNG QUẢN LÝ</p>
+</div>
+
+<div class="panel">
+
+<a class="btn" href="https://docs.google.com/spreadsheets/d/1ZE28bJKD_Tt_3qx-MDWXX4NWgowZsmrVdvOqoMFuDQE/edit?usp=sharing">
+📋 BẢNG CHẤM CÔNG
+</a>
+
+<a class="btn" href="https://docs.google.com/spreadsheets/d/1FVd8nu7S8tJbr5QjupTJc8vJQ0BEaiQZD5swzqsuJmo/edit?usp=sharing">
+💵 TIỀN MẶT
+</a>
+
+<a class="btn" href="https://khoq2.github.io/">
+📦 KHO QUẬN 2
+</a>
+
+<a class="btn" href="#">
+📦 KHO QUẬN 5
+</a>
+
+</div>
+
+<div class="footer">
+Design by: Phạm Văn Chương
+</div>
+
+</div>
+
+</body>
+</html>
